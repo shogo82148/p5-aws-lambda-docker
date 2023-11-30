@@ -20,6 +20,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: install docker-tags
+        run: |
+          cd /tmp
+          curl -sSL https://github.com/koki-develop/docker-tags/releases/download/v0.9.0/docker-tags_Linux_x86_64.tar.gz | tar xz
+          sudo mv docker-tags /usr/local/bin/
+
       - uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.38"
