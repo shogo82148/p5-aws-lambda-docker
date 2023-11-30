@@ -36,3 +36,4 @@ sub generate($version, $variant, $tag) {
 }
 
 generate($version, "run.$runtime", "$version.$runtime");
+generate($version, "run-paws.$runtime", "$version-paws.$runtime");
