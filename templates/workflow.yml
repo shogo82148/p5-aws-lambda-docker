@@ -57,5 +57,5 @@ jobs:
       - name: Publish to ECR Public Registry
         run: |
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/shogo82148
-          ./scripts/publish.pl "public.ecr.aws/$USERNAME/p5-aws-lambda" __PERL_VERSION__ __VARIANT__ __TAG__
+          ./scripts/publish.pl "public.ecr.aws/shogo82148/p5-aws-lambda" __PERL_VERSION__ __VARIANT__ __TAG__
           docker logout public.ecr.aws/shogo82148
