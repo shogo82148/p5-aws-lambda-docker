@@ -9,4 +9,4 @@ set -xue
 aws --region "us-east-1" cloudformation deploy \
     --stack-name "lambda-perl5-runtime-ecr" \
     --capabilities CAPABILITY_IAM \
-    --template-file "${ROOT}/../template/cfn-ecr.yml"
+    --template-file "${ROOT}/../templates/cfn-ecr.yml"

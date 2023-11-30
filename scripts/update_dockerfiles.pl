@@ -10,6 +10,10 @@ use JSON::PP qw/decode_json/;
 
 my $version = $ARGV[0];
 my $runtime = $ARGV[1];
+unless ($version || $runtime) {
+    die "usage: $0 <version> <runtime>";
+}
+
 my $version_hyphen = $version =~ s/[.]/-/r;
 
 sub slurp($file) {
@@ -59,7 +63,7 @@ chomp($variables->{__BASE_AL2023__} = `docker-tags public.ecr.aws/lambda/provide
 
 say STDERR "$_ => $variables->{$_}" for sort keys %$variables;
 
-for my $template (<$FindBin::Bin/../template/$runtime/*>) {
+for my $template (<$FindBin::Bin/../templates/$runtime/*>) {
     my $dir = basename($template);
     my $content = slurp("$template/Dockerfile");
     for my $key (keys %$variables) {
