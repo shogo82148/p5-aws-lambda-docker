@@ -9,8 +9,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/3050d9fcd71b93540cc8421cad7f49e1f1aa4c86b314247286f39dc52a294b38.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/fdca92d5f98f6d6e9d9144118f4bdc475f73c0f5fbfb6b66e78a867bb754868e.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/e288b7764e261ae11ae8cbc5d55f770945137e57e7b0066741b212d489e06918.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/31b9fc9ace7279e193ad8aaee73dbd567af690fd1a8af1b011451b96fb7adac7.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -18,7 +18,7 @@ RUN cd /opt && \
     curl -sSL "$ARCHIVE_URL" -o runtime.zip && \
     unzip -o runtime.zip && rm runtime.zip
 
-FROM public.ecr.aws/lambda/provided:al2.2023.11.18.01
+FROM public.ecr.aws/lambda/provided:al2.2023.12.01.08
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

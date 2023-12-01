@@ -9,8 +9,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/1a7e6c7af952229ec16e4558acce9a8f75d884e8604abe525d39b3cb758f8921.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/d55a54c3237bdc01dc1d6a207dea37483589b1174abab9daa45ddef81011d405.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/597018c1aceed36b8d1072b42ccb7eefe1296a4ccbd48dbc871d625028e6d961.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/a9a2b6b8e1e586117681691298d283eefa2c3fe6482da281cc7e413b8039836b.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -19,7 +19,7 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/lambda/provided:al2023.2023.11.18.01
+FROM public.ecr.aws/lambda/provided:al2023.2023.12.01.08
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
