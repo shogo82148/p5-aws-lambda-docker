@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/e288b7764e261ae11ae8cbc5d55f770945137e57e7b0066741b212d489e06918.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/31b9fc9ace7279e193ad8aaee73dbd567af690fd1a8af1b011451b96fb7adac7.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/be7e642000e6c7b7a631bc49b1105b9c6df9db39cc5f9db2ef6e2be589dd3d06.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/5a7de0dfaf7a2ee2e7b1ec08058f26d1654b03c9de71efae6c06cc11acd6660d.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
