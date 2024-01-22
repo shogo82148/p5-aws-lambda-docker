@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/a0490d99c22c8f5dd0804fb49fc54891d3736db42c6fbc8e7077d472675a8011.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/20302c9129aced4c47b76414a31633162f296cdde6d32f06b288b782a76b5e04.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/9f64d05ffe50d5231ec7a5b1f8e1f839247b546ce3dc9db3ea6462667eb0a14f.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/ac971520c9b5ef1100f4915887ccbc7b538db7006f6a7a9d14e55f7236ce9250.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
