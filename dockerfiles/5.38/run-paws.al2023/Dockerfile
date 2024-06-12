@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/9f64d05ffe50d5231ec7a5b1f8e1f839247b546ce3dc9db3ea6462667eb0a14f.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/ac971520c9b5ef1100f4915887ccbc7b538db7006f6a7a9d14e55f7236ce9250.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/9d2406cf073e1a1a9959fb9c259bb1a7170c4b7fbc20d3f239d418cbf1718f81.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/2eeea7f542ba720cdfdbecbcc35724b5fee9317e90992690ca62da44e81f9a21.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -16,8 +16,8 @@ RUN cd /opt && \
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2023-x86_64/2a8282b79a5d27c8aa2461801ab3d7c234a84ba20535943475bd90d2c8983d42.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2023-arm64/d7b8bc97e80d750f09e8150cd86843bd8255eb18824b52371cd263fbe657d80e.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2023-x86_64/16d04893e1e6292bf248f18e9851f7800a6a56539f74f22cd083efba1d5921c7.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2023-arm64/26370d2f19052cf2b85f6d6ce5cf5df43f45bf7d94dc411974569c30451929dd.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
