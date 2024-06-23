@@ -13,5 +13,5 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/shogo82148/lambda-provided:al2023.2024.06.15
+FROM public.ecr.aws/shogo82148/lambda-provided:al2023.2024.06.22
 COPY --from=0 /opt /opt
