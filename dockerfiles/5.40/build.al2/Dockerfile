@@ -12,7 +12,7 @@ RUN cd /opt && \
     curl -sSL "$ARCHIVE_URL" -o runtime.zip && \
     unzip -o runtime.zip && rm runtime.zip
 
-FROM public.ecr.aws/shogo82148/lambda-provided:build-al2.2024.08.23
+FROM public.ecr.aws/shogo82148/lambda-provided:build-al2.2024.09.14
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
