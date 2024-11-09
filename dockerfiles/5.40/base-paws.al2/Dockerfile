@@ -30,7 +30,7 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/lambda/provided:al2.2024.10.30.15
+FROM public.ecr.aws/lambda/provided:al2.2024.11.08.16
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
