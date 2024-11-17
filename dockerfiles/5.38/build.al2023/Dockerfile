@@ -13,7 +13,7 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/shogo82148/lambda-provided:build-al2023.2024.10.18
+FROM public.ecr.aws/shogo82148/lambda-provided:build-al2023.2024.11.16
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
