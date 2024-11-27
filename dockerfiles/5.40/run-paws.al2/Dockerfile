@@ -25,6 +25,6 @@ RUN cd /opt && \
     curl -sSL "$ARCHIVE_URL" -o runtime.zip && \
     unzip -o runtime.zip && rm runtime.zip
 
-FROM public.ecr.aws/shogo82148/lambda-provided:al2.2024.10.18
+FROM public.ecr.aws/shogo82148/lambda-provided:al2.2024.11.26
 COPY --from=0 /opt /opt
 COPY --from=1 /opt /opt
