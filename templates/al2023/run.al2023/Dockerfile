@@ -13,5 +13,5 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/shogo82148/lambda-provided:al2023.__DOCKER_LAMBDA_PROVIDED.AL2023_RUN__
+FROM ghcr.io/shogo82148/lambda-provided:al2023.__DOCKER_LAMBDA_PROVIDED.AL2023_RUN__
 COPY --from=0 /opt /opt
