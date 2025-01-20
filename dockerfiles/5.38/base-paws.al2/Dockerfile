@@ -7,8 +7,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/213e4bf26e0989830bfa97706e5e965c65fd13fc70c5c83d29423d55d9e653f2.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/aaeee8f41dc686848198d6df3cdc7aa2c8543dc50d10c47d211c98067f518787.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/883b8d365d431631ef48a8c1f06e4cfc7219399b46e5ec675951a2e55b6fcb5b.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/a012ee3b9c190b4bd926bb8d2aca9ffd54a4f2f4ca42309c5f63b80311f20dd2.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -20,8 +20,8 @@ RUN cd /opt && \
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-x86_64/1d8fc705f69d7e2b65330d454a5a94ce421c99112d6a4fc774f9ef96f0f1b86d.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-arm64/506250a3bd68a491aaf56a5fe7fb47002c3fbb92014901c9408b65e6a44cd601.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-x86_64/561bf6a5e89bfb2b6c39347a96b66fcc0521c102ae1237e29d526e96de3c0083.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-arm64/1200337e50e9a32bcaa3d3cc7670d1bda81dbcbf333389837119268c13ca2cd3.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
