@@ -13,5 +13,5 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM ghcr.io/shogo82148/lambda-provided:al2023.2025.01.01
+FROM ghcr.io/shogo82148/lambda-provided:al2023.2025.02.15
 COPY --from=0 /opt /opt
