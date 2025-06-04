@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-runtime-al2023-x86_64/7ec62d2fdf804ca600f22af95c470820b46a6e521a7611c48b79df7a5e201f4c.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-runtime-al2023-arm64/317635bba7dbbf437256b2ce63a28464ac5f2fbf54f13e25cddd6922f70a7547.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-runtime-al2023-x86_64/bcd5df0e570dd94d1d3f907fb840191bee624a53341a56a822f8019f74d0572b.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-runtime-al2023-arm64/d95f048de5276be527f3ba76e62bc26e9142f05426b3333e0fe6a255acd052c9.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -16,8 +16,8 @@ RUN cd /opt && \
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-paws-al2023-x86_64/9284234b1012574a84b8d2d2618eae7fa457381841332c7cdfb45040f0538778.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-paws-al2023-arm64/d3863b5afb5e168907e3ca7c31b0d03e4ed83c6a62115e364efbb9322ec1110a.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-paws-al2023-x86_64/4a62b848b8fe26daf3853eae19c7c1f476f9ff7fc10762a9af42f8bf32b92fd1.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-40-paws-al2023-arm64/59a26a2fdac749b2d71106bd9b9532e9c1923e89f06898e66700984b4101e9d0.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -26,7 +26,7 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM ghcr.io/shogo82148/lambda-provided:build-al2023.2025.03.08
+FROM ghcr.io/shogo82148/lambda-provided:build-al2023.2025.05.18
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
