@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2023
 RUN dnf install -y unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/fa5dbc0a48d9c28d4e79691d951e7650c9de6b8b4d0be509171a3b9a0f88c102.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/768d433d7bbc570bc0953a5526c557a8083787fe6fffa1f4114f6660abac2faa.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-x86_64/cca6f3c48931ea80e70d343bfd7f058503d2748913b5508ef4e622c93fc7ac29.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2023-arm64/618b8d9231b7cb695973753d095c73fa52b117dc71211e5764e491f3b4270afe.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -13,7 +13,7 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM ghcr.io/shogo82148/lambda-provided:build-al2023.2025.03.08
+FROM ghcr.io/shogo82148/lambda-provided:build-al2023.2025.06.07
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
