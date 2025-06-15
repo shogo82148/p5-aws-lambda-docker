@@ -3,8 +3,8 @@
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/883b8d365d431631ef48a8c1f06e4cfc7219399b46e5ec675951a2e55b6fcb5b.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/a012ee3b9c190b4bd926bb8d2aca9ffd54a4f2f4ca42309c5f63b80311f20dd2.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-x86_64/581cbed8d2034af110a084b7b2e5a42d07a5c46256738e8010f4270a34de4f2e.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-runtime-al2-arm64/71c17ee71675bf503ba75e5bc7604e5a6d2f971f92197d654e600f330fe682cb.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -16,8 +16,8 @@ RUN cd /opt && \
 FROM --platform=$BUILDPLATFORM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN yum install -y curl unzip
 
-ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-x86_64/561bf6a5e89bfb2b6c39347a96b66fcc0521c102ae1237e29d526e96de3c0083.zip
-ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-arm64/1200337e50e9a32bcaa3d3cc7670d1bda81dbcbf333389837119268c13ca2cd3.zip
+ENV ARCHIVE_URL_AMD64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-x86_64/132b64b00fd120570c8a4a7c0743e7fd4cc2a157b437698d82d6d37b633122ac.zip
+ENV ARCHIVE_URL_ARM64=https://shogo82148-lambda-perl-runtime-us-east-1.s3.amazonaws.com/perl-5-38-paws-al2-arm64/024f096c387b2e12867a389abf3a78b81c082a00693e323f31e93fd7788f320b.zip
 
 ARG TARGETARCH
 RUN cd /opt && \
@@ -25,6 +25,6 @@ RUN cd /opt && \
     curl -sSL "$ARCHIVE_URL" -o runtime.zip && \
     unzip -o runtime.zip && rm runtime.zip
 
-FROM ghcr.io/shogo82148/lambda-provided:al2.2025.03.28
+FROM ghcr.io/shogo82148/lambda-provided:al2.2025.06.04
 COPY --from=0 /opt /opt
 COPY --from=1 /opt /opt
