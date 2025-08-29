@@ -25,6 +25,6 @@ RUN cd /opt && \
     curl -sSL "$ARCHIVE_URL" -o runtime.zip && \
     unzip -o runtime.zip && rm runtime.zip
 
-FROM ghcr.io/shogo82148/lambda-provided:al2.2025.08.23
+FROM ghcr.io/shogo82148/lambda-provided:al2.2025.08.29
 COPY --from=0 /opt /opt
 COPY --from=1 /opt /opt
