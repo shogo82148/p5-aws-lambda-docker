@@ -1,15 +1,15 @@
-name: Build base-5.40-paws.al2023 image
+name: Build build-5.42-paws.al2 image
 
 on:
   push:
     branches:
       - main
     tags:
-      - "5.40-base-paws.al2023/*"
+      - "5.42-build-paws.al2/*"
   pull_request:
     paths:
-      - ".github/workflows/5.40-base-paws.al2023.yml"
-      - "dockerfiles/5.40/base-paws.al2023/**"
+      - ".github/workflows/5.42-build-paws.al2.yml"
+      - "dockerfiles/5.42/build-paws.al2/**"
   workflow_dispatch:
 
 permissions:
@@ -28,7 +28,7 @@ jobs:
         with:
           perl-version: "5.42"
       - name: build
-        run: ./scripts/build.pl 5.40 base-paws.al2023
+        run: ./scripts/build.pl 5.42 build-paws.al2
 
       - name: Publish to DockerHub
         env:
@@ -36,7 +36,7 @@ jobs:
           PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
           printenv PASSWORD | docker login --username "$USERNAME" --password-stdin
-          ./scripts/publish.pl "$USERNAME/p5-aws-lambda" 5.40 base-paws.al2023 base-5.40-paws.al2023
+          ./scripts/publish.pl "$USERNAME/p5-aws-lambda" 5.42 build-paws.al2 build-5.42-paws.al2
           docker logout
 
       - name: Publish to GitHub Packages Container registry
@@ -45,7 +45,7 @@ jobs:
           PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           printenv PASSWORD | docker login --username "$USERNAME" --password-stdin ghcr.io
-          ./scripts/publish.pl "ghcr.io/$USERNAME/p5-aws-lambda" 5.40 base-paws.al2023 base-5.40-paws.al2023
+          ./scripts/publish.pl "ghcr.io/$USERNAME/p5-aws-lambda" 5.42 build-paws.al2 build-5.42-paws.al2
           docker logout ghcr.io
 
       - name: Configure AWS Credentials
@@ -57,5 +57,5 @@ jobs:
       - name: Publish to ECR Public Registry
         run: |
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/shogo82148
-          ./scripts/publish.pl "public.ecr.aws/shogo82148/p5-aws-lambda" 5.40 base-paws.al2023 base-5.40-paws.al2023
+          ./scripts/publish.pl "public.ecr.aws/shogo82148/p5-aws-lambda" 5.42 build-paws.al2 build-5.42-paws.al2
           docker logout public.ecr.aws/shogo82148
