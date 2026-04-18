@@ -16,14 +16,14 @@ jobs:
     steps:
       # secrets.GITHUB_TOKEN doesn't start a new workflow run, but we want.
       - id: generate
-        uses: shogo82148/actions-github-app-token@v1
+        uses: shogo82148/actions-github-app-token@d75b03a80d0450d087a12b72dff2d987a4ced993 # v1.3.0
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           token: ${{ steps.generate.outputs.token }}
           fetch-depth: 0 # we need all tags
 
-      - uses: shogo82148/actions-setup-perl@v1
+      - uses: shogo82148/actions-setup-perl@5a2f3b681f2e2fa0db6cc52c7608d9916527aa58 # v1.40.0
         with:
           perl-version: "5.40"
 
