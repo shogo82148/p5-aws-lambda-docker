@@ -19,7 +19,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: install docker-tags
         run: |
@@ -27,11 +27,11 @@ jobs:
           curl -sSL https://github.com/koki-develop/docker-tags/releases/download/v0.9.0/docker-tags_Linux_x86_64.tar.gz | tar xz
           sudo mv docker-tags /usr/local/bin/
 
-      - uses: shogo82148/actions-setup-perl@v1
+      - uses: shogo82148/actions-setup-perl@5a2f3b681f2e2fa0db6cc52c7608d9916527aa58 # v1.40.0
         with:
           perl-version: "5.42"
       - name: Configure AWS Credentials
-        uses: fuller-inc/actions-aws-assume-role@v1
+        uses: fuller-inc/actions-aws-assume-role@19da35d1a3ac5e2fa44b6052f811d5e95195088b # v1.9.0
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::445285296882:role/lambda-perl5-runtime-ecr-DeploymentRole-199JZ5SP862Q0
@@ -45,8 +45,8 @@ jobs:
 
       # commit and push
       - id: generate
-        uses: shogo82148/actions-github-app-token@v1
+        uses: shogo82148/actions-github-app-token@d75b03a80d0450d087a12b72dff2d987a4ced993 # v1.3.0
       - name: Commit and push
-        uses: shogo82148/actions-commit-and-create-pr@v1
+        uses: shogo82148/actions-commit-and-create-pr@b1322fe9da4037e9720e34ea221997cffcd3498d # v1.1.4
         with:
           github-token: ${{ steps.generate.outputs.token }}
