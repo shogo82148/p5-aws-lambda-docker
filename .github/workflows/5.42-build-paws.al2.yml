@@ -49,7 +49,7 @@ jobs:
           docker logout ghcr.io
 
       - name: Configure AWS Credentials
-        uses: fuller-inc/actions-aws-assume-role@19da35d1a3ac5e2fa44b6052f811d5e95195088b # v1.9.0
+        uses: fuller-inc/actions-aws-assume-role@c6cc1f39a57c0228a4b542ae2b3d49d3e56ce85a # v1.9.1
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::445285296882:role/lambda-perl5-runtime-ecr-DeploymentRole-199JZ5SP862Q0
