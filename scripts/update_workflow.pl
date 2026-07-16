@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-use v5.40;
+use v5.44;
 use warnings;
 use utf8;
 use FindBin;
