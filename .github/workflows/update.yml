@@ -29,7 +29,7 @@ jobs:
 
       - uses: shogo82148/actions-setup-perl@3d3cb73ca65d657a809d97eab324d4e4f140bf5e # v1.42.0
         with:
-          perl-version: "5.42"
+          perl-version: "5.44"
       - name: Configure AWS Credentials
         uses: fuller-inc/actions-aws-assume-role@c6cc1f39a57c0228a4b542ae2b3d49d3e56ce85a # v1.9.1
         with:
