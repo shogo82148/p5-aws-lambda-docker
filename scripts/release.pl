@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 
-use v5.40;
-use warnings;
+use v5.44;
 use utf8;
 use FindBin;
 use Carp qw/croak/;
