@@ -36,5 +36,5 @@ FROM public.ecr.aws/lambda/provided:al2023.2026.08.19.14
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 COPY --from=0 /opt /opt
-RUN ln -s /opt/bootstrap /var/runtime/bootstrap
+RUN ln -sf /opt/bootstrap /var/runtime/bootstrap
 COPY --from=1 /opt /opt
