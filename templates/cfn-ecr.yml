@@ -17,6 +17,10 @@ Resources:
           It contains pre-built [perl](https://www.perl.org/) binary and [AWS::Lambda](https://metacpan.org/pod/AWS::Lambda)
           that is one of Lambda Runtime Interface Client for Perl.
 
+          # DEPRECATED
+          The images on ECR Public are deprecated and may be removed in the future.
+          Please use the images from [GitHub Container Registry](https://github.com/shogo82148/p5-aws-lambda/pkgs/container/p5-aws-lambda).
+
           # Image Tags
 
           ## Amazon Linux 2023 Based Images
