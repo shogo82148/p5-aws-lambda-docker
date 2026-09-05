@@ -30,11 +30,10 @@ RUN cd /opt && \
     unzip -o runtime.zip && rm runtime.zip
 
 
-FROM public.ecr.aws/lambda/provided:al2023.2026.08.19.14
+FROM public.ecr.aws/lambda/provided:al2023.2026.09.04.13
 
 # Use the custom runtime perl in preference to the system perl
 ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 COPY --from=0 /opt /opt
-RUN ln -s /opt/bootstrap /var/runtime/bootstrap
 COPY --from=1 /opt /opt
