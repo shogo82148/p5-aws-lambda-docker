@@ -45,7 +45,7 @@ for my $arch (qw/x86_64 arm64/) {
 }
 
 # get the latest version of base image
-for my $provided(qw/provided.al2 provided.al2023/) {
+for my $provided(qw/provided.al2023/) {
     for my $variant(qw/run build/) {
         my $version = `gh api --jq '[.[].ref] | sort | last' /repos/shogo82148/docker-lambda/git/matching-refs/tags/$provided-$variant/ | cut -d/ -f4`;
         chomp $version;
@@ -57,7 +57,6 @@ for my $provided(qw/provided.al2 provided.al2023/) {
 }
 
 $ENV{AWS_SDK_LOAD_CONFIG} = 1;
-chomp($variables->{__BASE_AL2__} = `docker-tags public.ecr.aws/lambda/provided | grep -E '^al2[.][.0-9]+\$' | sort | tail -n 1`);
 chomp($variables->{__BASE_AL2023__} = `docker-tags public.ecr.aws/lambda/provided | grep -E '^al2023[.][.0-9]+\$' | sort | tail -n 1`);
 
 say STDERR "$_ => $variables->{$_}" for sort keys %$variables;
