@@ -47,15 +47,3 @@ jobs:
           printenv PASSWORD | docker login --username "$USERNAME" --password-stdin ghcr.io
           ./scripts/publish.pl "ghcr.io/$USERNAME/p5-aws-lambda" 5.44 run-paws.al2023 5.44-paws.al2023
           docker logout ghcr.io
-
-      - name: Configure AWS Credentials
-        uses: fuller-inc/actions-aws-assume-role@db10fc9ddce76ac14ce9182c2433f497580bec93 # v1.9.2
-        with:
-          aws-region: us-east-1
-          role-to-assume: arn:aws:iam::445285296882:role/lambda-perl5-runtime-ecr-DeploymentRole-199JZ5SP862Q0
-          role-session-tagging: true
-      - name: Publish to ECR Public Registry
-        run: |
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/shogo82148
-          ./scripts/publish.pl "public.ecr.aws/shogo82148/p5-aws-lambda" 5.44 run-paws.al2023 5.44-paws.al2023
-          docker logout public.ecr.aws/shogo82148

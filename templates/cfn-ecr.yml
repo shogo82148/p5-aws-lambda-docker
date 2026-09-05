@@ -17,6 +17,10 @@ Resources:
           It contains pre-built [perl](https://www.perl.org/) binary and [AWS::Lambda](https://metacpan.org/pod/AWS::Lambda)
           that is one of Lambda Runtime Interface Client for Perl.
 
+          # DEPRECATED
+          The images on ECR Public are deprecated and may be removed in the future.
+          Please use the images from [GitHub Container Registry](https://github.com/shogo82148/p5-aws-lambda/pkgs/container/p5-aws-lambda).
+
           # Image Tags
 
           ## Amazon Linux 2023 Based Images
@@ -103,37 +107,20 @@ Resources:
   DeploymentRole:
     Type: AWS::IAM::Role
     Properties:
-      # trust policy for using https://github.com/fuller-inc/actions-aws-assume-role
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
-              AWS: arn:aws:iam::053160724612:root
+              Federated:
+                !Sub "arn:${AWS::Partition}:iam::${AWS::AccountId}:oidc-provider/tok\
+                en.actions.githubusercontent.com"
             Action:
-              - "sts:AssumeRole"
+              - "sts:AssumeRoleWithWebIdentity"
             Condition:
               StringEquals:
-                "sts:ExternalId": shogo82148/p5-aws-lambda-docker
-          - Effect: Allow
-            Principal:
-              AWS: arn:aws:iam::053160724612:root
-            Action:
-              - "sts:TagSession"
-      Policies:
-        - PolicyName: Deployment
-          PolicyDocument:
-            Version: 2012-10-17
-            Statement:
-              - Effect: Allow
-                Action:
-                  - "ecr-public:*"
-                Resource:
-                  - !Sub "arn:aws:ecr-public::${AWS::AccountId}:repository/p5-aws-lambda"
-              - Effect: Allow
-                Action:
-                  - "ecr-public:GetAuthorizationToken"
-                  - "sts:GetServiceBearerToken"
-                Resource: "*"
+                "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+              StringLike:
+                "token.actions.githubusercontent.com:sub": "repo:shogo82148/p5-aws-lambda-docker:*"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonElasticContainerRegistryPublicReadOnly
