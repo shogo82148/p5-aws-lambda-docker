@@ -21,7 +21,7 @@ Resources:
 
           ## Amazon Linux 2023 Based Images
 
-          The following tags are based on Amazon Linux 2.
+          The following tags are based on Amazon Linux 2023.
 
           - `base-<version>.al2023`
             - The image based on [lambda/provided](https://gallery.ecr.aws/lambda/provided) Amazon Linux 2023
@@ -42,40 +42,6 @@ Resources:
             - The image based on [shogo82148/lambda-provided](https://gallery.ecr.aws/shogo82148/lambda-provided) Amazon Linux 2023
             - It also contains [Paws](https://metacpan.org/pod/Paws) that is a Perl SDK for AWS APIs
 
-          ## Amazon Linux 2 Based Images
-
-          The following tags are based on Amazon Linux 2.
-
-          - `base-<version>.al2`
-            - The image based on [lambda/provided](https://gallery.ecr.aws/lambda/provided) Amazon Linux 2
-            - You can customize this and deploy your images to AWS Lambda
-          - `base-<version>-paws.al2`
-            - The image based on [lambda/provided](https://gallery.ecr.aws/lambda/provided) Amazon Linux 2
-            - It also contains [Paws](https://metacpan.org/pod/Paws) that is a Perl SDK for AWS APIs
-          - `build-<version>.al2`
-            - The image based on [shogo82148/lambda-provided](https://gallery.ecr.aws/shogo82148/lambda-provided) Amazon Linux 2
-            - You can build CPAN modules on your local machines
-          - `build-<version>-paws.al2`
-            - The image based on [shogo82148/lambda-provided](https://gallery.ecr.aws/shogo82148/lambda-provided) Amazon Linux 2
-            - It also contains [Paws](https://metacpan.org/pod/Paws) that is a Perl SDK for AWS APIs
-          - `<version>.al2`
-            - The image based on [shogo82148/lambda-provided](https://gallery.ecr.aws/shogo82148/lambda-provided) Amazon Linux 2
-            - You can run your Lambda functions on your local machines
-          - `<version>-paws.al2`
-            - The image based on [shogo82148/lambda-provided](https://gallery.ecr.aws/shogo82148/lambda-provided) Amazon Linux 2
-            - It also contains [Paws](https://metacpan.org/pod/Paws) that is a Perl SDK for AWS APIs
-
-          ## Amazon Linux 1 Based Images
-
-          These are based on Amazon Linux.
-
-          - `base-<version>`
-          - `base-<version>-paws`
-          - `build-<version>`
-          - `build-<version>-paws`
-          - `<version>`
-          - `<version>-paws`
-
           # See Also
 
           - [AWS::Lambda on metacpan](https://metacpan.org/pod/AWS::Lambda)
@@ -90,9 +56,9 @@ Resources:
 
           Here is an example of Dockerfile.
 
-              FROM shogo82148/p5-aws-lambda:base-5.34.al2023
+              FROM shogo82148/p5-aws-lambda:base-5.44.al2023
               # or if you want to use ECR Public.
-              # FROM public.ecr.aws/shogo82148/p5-aws-lambda:base-5.34.al2023
+              # FROM public.ecr.aws/shogo82148/p5-aws-lambda:base-5.44.al2023
               COPY handler.pl /var/task/
               CMD [ "handler.handle" ]
 
@@ -121,17 +87,17 @@ Resources:
                   --function-name "hello-perl" \
                   --code ImageUri=123412341234.dkr.ecr.sa-east-1.amazonaws.com/hello-perl:latest \
                   --handler "handler.handle" \
-                  --runtime provided.al2 \
+                  --runtime provided.al2023 \
                   --role arn:aws:iam::xxxxxxxxxxxx:role/service-role/lambda-custom-runtime-perl-role
 
           # Use lambci/lambda based images
 
               # Install the dependency.
-              docker run --rm -v $(PWD):/var/task shogo82148/p5-aws-lambda:build-5.34.al2 \
+              docker run --rm -v $(PWD):/var/task shogo82148/p5-aws-lambda:build-5.44.al2023 \
                   cpanm --notest --local-lib extlocal --no-man-pages --installdeps .
 
               # run an event.
-              docker run --rm -v $(PWD):/var/task shogo82148/p5-aws-lambda:5.34.al2 \
+              docker run --rm -v $(PWD):/var/task shogo82148/p5-aws-lambda:5.44.al2023 \
                   handler.handle '{"some":"event"}'
 
   DeploymentRole:
