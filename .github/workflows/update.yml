@@ -26,7 +26,7 @@ jobs:
           curl -sSL https://github.com/koki-develop/docker-tags/releases/download/v0.9.0/docker-tags_Linux_x86_64.tar.gz | tar xz
           sudo mv docker-tags /usr/local/bin/
 
-      - uses: shogo82148/actions-setup-perl@8b574cdc2dffdae49f803204a4f2b716a2fa1db7 # v1.44.2
+      - uses: shogo82148/actions-setup-perl@3b59bd33efdae98406a9bc4b75a4aa041e11993a # v1.44.4
         with:
           perl-version: "5.44"
       - name: Configure AWS Credentials
