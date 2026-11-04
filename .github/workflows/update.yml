@@ -43,7 +43,7 @@ jobs:
 
       # commit and push
       - id: generate
-        uses: shogo82148/actions-github-app-token@v1.3.3
+        uses: shogo82148/actions-github-app-token@v1.3.4
       - name: Commit and push
         uses: shogo82148/actions-commit-and-create-pr@v1.1.4
         with:
