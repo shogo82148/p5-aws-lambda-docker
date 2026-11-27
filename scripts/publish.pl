@@ -60,16 +60,12 @@ docker(
 
 # create and push the manifest
 docker(
-    "manifest",
+    "buildx",
+    "imagetools",
     "create",
-    "$repository:$tag",
+    "-t", "$repository:$tag",
     "$repository:$tag-x86_64",
     "$repository:$tag-arm64",
-);
-docker(
-    "manifest",
-    "push",
-    "$repository:$tag",
 );
 
 # create and push the images for the version
@@ -95,14 +91,10 @@ docker(
 
 # create and push the manifest for the version
 docker(
-    "manifest",
+    "buildx",
+    "imagetools",
     "create",
-    "$repository:$tag-$version",
+    "-t", "$repository:$tag-$version",
     "$repository:$tag-$version-x86_64",
     "$repository:$tag-$version-arm64",
-);
-docker(
-    "manifest",
-    "push",
-    "$repository:$tag-$version",
 );
